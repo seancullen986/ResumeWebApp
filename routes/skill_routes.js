@@ -85,4 +85,26 @@ router.get('/delete', function(req, res){
     }
 });
 
+
+router.get('/edit', function(req, res){
+    if(req.query.skill_id == null) {
+        res.send('An skill id is required');
+    }
+    else {
+        skill_dal.edit(req.query.skill_id, function(err, result){
+            console.log(result);
+            res.render('skill/skillUpdate', {skill: result[0]/*, address: result[1]*/});
+        });
+    }
+
+});
+
+
+router.get('/update', function(req, res) {
+    skill_dal.update(req.query, function(err, result){
+        res.redirect(302, '/skill/all');
+    });
+});
+
+
 module.exports = router;

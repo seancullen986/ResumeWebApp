@@ -88,4 +88,26 @@ router.get('/delete', function(req, res){
     }
 });
 
+
+router.get('/edit', function(req, res){
+    if(req.query.address_id == null) {
+        res.send('An address id is required');
+    }
+    else {
+        address_dal.edit(req.query.address_id, function(err, result){
+            console.log(result);
+            res.render('address/addressUpdate', {address: result[0]/*, address: result[1]*/});
+        });
+    }
+
+});
+
+
+router.get('/update', function(req, res) {
+    address_dal.update(req.query, function(err, result){
+        res.redirect(302, '/address/all');
+    });
+});
+
+
 module.exports = router;

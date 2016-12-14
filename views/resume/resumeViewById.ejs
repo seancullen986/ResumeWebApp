@@ -8,7 +8,29 @@
     <li>Resume ID: <%= result[0].resume_id%></li>
     <li>Account ID: <%= result[0].account_id%></li>
     <li>Resume Name: <%= result[0].resume_name %></li>
-</ul>
-</body>
 
-</html>
+    <li>Company(s):
+        <ul>
+            <% for(var i=0; companies.length > i; i++ ) { %>
+            <li><%= companies[i] %></li>
+            <% } %>
+        </ul>
+    </li>
+    <li>School(s):
+        <ul>
+            <% for(var i=0; schools.length > i; i++ ) { %>
+            <li><%= schools[i] %></li>
+            <% } %>
+        </ul>
+    </li>
+    <li>Skill(s):
+        <ul>
+            <% for(var i=0; skills.length > i; i++ ) { %>
+            <li><%= skills[i] %></li>
+            <% } %>
+        </ul>
+    </li>
+</ul>
+<br/>
+<a href="/resume/all">Back to Resumes</a>
+<%- include("../includes/footer.ejs"); %>

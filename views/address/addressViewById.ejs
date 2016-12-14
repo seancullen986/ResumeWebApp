@@ -1,14 +1,9 @@
-<html>
-<head>
-    <title>Addresses- <%= result[0].email %></title>
-</head>
-<body>
-<h1>Addresses</h1>
+<%- include("../includes/header.ejs", {title:"Address"}); %>
+<h1>Address</h1>
 <ul>
     <li>Address ID: <%= result[0].address_id%></li>
     <li>Street: <%= result[0].street%></li>
     <li>Zip Code: <%= result[0].zip_code %></li>
 </ul>
-</body>
-
-</html>
+<a href="/address/all">Back to Addresses</a>
+<%- include("../includes/footer.ejs"); %>

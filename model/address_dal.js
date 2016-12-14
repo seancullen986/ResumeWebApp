@@ -44,3 +44,23 @@ exports.delete = function(address_id, callback) {
     });
 
 };
+
+
+exports.update = function(params, callback) {
+    var query = 'UPDATE address SET street = ?, zip_code = ? WHERE address_id = ?';
+    var queryData = [params.street, params.zip_code, params.address_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};
+
+
+exports.edit = function(address_id, callback) {
+    var query = 'SELECT * from address WHERE address_id = ?';
+    var queryData = [address_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};

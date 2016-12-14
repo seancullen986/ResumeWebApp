@@ -43,3 +43,23 @@ exports.delete = function(skill_id, callback) {
     });
 
 };
+
+
+exports.update = function(params, callback) {
+    var query = 'UPDATE skill SET skill_name = ?, description = ? WHERE skill_id = ?';
+    var queryData = [params.skill_name, params.description, params.skill_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};
+
+
+exports.edit = function(skill_id, callback) {
+    var query = 'SELECT * from skill WHERE skill_id = ?';
+    var queryData = [skill_id];
+
+    connection.query(query, queryData, function(err, result) {
+        callback(err, result);
+    });
+};
